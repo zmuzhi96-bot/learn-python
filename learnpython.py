@@ -85,4 +85,51 @@ set（集合）：只存储 Key（元素），没有值。它其实就是一堆�
 s = {'张三', 18, '李四'}
 # 里面只有元素，没有键值对应关系
 '''
+###################--------day2--------###################
+
+# x = float('123.456789')
+# print(x)
+
+# n1 = 255
+# n2 = 1000
+# x1, x2 = hex(n1), hex(n2)
+# print(x1, x2)
+
+# a = int(input("请输入一个整数："))
+# def my_abs(x):
+#     if x >= 0:
+#         return x
+#     else:
+#         return -x
+# print(my_abs(a))
+import math
+def quadratic(a, b, c):
+    delta = b ** 2 - 4*a*c
+    if delta < 0:
+        print("方程无实数解")
+    elif delta == 0:
+        x1 = x2 = -b/(2*a)
+        return x1,x2
+    else:
+        x1 = (-b + math.sqrt(delta)) / (2*a)
+        x2 = (-b - math.sqrt(delta)) / (2*a)
+        return x1,x2
+a,b,c = int(input("请输入二次方程的系数a: ")), int(input("请输入二次方程的系数b: ")), int(input("请输入二次方程的系数c: "))
+
+x1, x2 = quadratic(a, b, c)
+print(f"方程的解为：x1 = {x1}, x2 = {x2}")
+
+if quadratic(2, 3, 1) != (-0.5, -1.0):
+    print('测试失败')
+elif quadratic(1, 3, -4) != (1.0, -4.0):
+    print('测试失败')
+else:
+    print('测试成功')
+
+
+
+
+
+
+
 
