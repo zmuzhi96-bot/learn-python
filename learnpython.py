@@ -102,34 +102,97 @@ s = {'张三', 18, '李四'}
 #     else:
 #         return -x
 # print(my_abs(a))
-import math
-def quadratic(a, b, c):
-    delta = b ** 2 - 4*a*c
-    if delta < 0:
-        print("方程无实数解")
-    elif delta == 0:
-        x1 = x2 = -b/(2*a)
-        return x1,x2
+# import math
+# def quadratic(a, b, c):
+#     delta = b ** 2 - 4*a*c
+#     if delta < 0:
+#         print("方程无实数解")
+#     elif delta == 0:
+#         x1 = x2 = -b/(2*a)
+#         return x1,x2
+#     else:
+#         x1 = (-b + math.sqrt(delta)) / (2*a)
+#         x2 = (-b - math.sqrt(delta)) / (2*a)
+#         return x1,x2
+# a,b,c = int(input("请输入二次方程的系数a: ")), int(input("请输入二次方程的系数b: ")), int(input("请输入二次方程的系数c: "))
+
+# x1, x2 = quadratic(a, b, c)
+# print(f"方程的解为：x1 = {x1}, x2 = {x2}")
+
+# if quadratic(2, 3, 1) != (-0.5, -1.0):
+#     print('测试失败')
+# elif quadratic(1, 3, -4) != (1.0, -4.0):
+#     print('测试失败')
+# else:
+#     print('测试成功')
+
+
+# def mul(a, b = 6, *args):
+#     s = a * b
+#     for v in args:
+#         s *= v
+#     return s
+# # 测试
+# print('mul(5) =', mul(5))
+# print('mul(5, 6) =', mul(5, 6))
+# print('mul(5, 6, 7) =', mul(5, 6, 7))
+# print('mul(5, 6, 7, 9) =', mul(5, 6, 7, 9))
+# if mul(5) != 5:
+#     print('mul(5)测试失败!')
+# elif mul(5, 6) != 30:
+#     print('mul(5, 6)测试失败!')
+# elif mul(5, 6, 7) != 210:
+#     print('mul(5, 6, 7)测试失败!')
+# elif mul(5, 6, 7, 9) != 1890:
+#     print('mul(5, 6, 7, 9)测试失败!')
+# else:
+#     try:
+#         mul()
+#         print('mul()测试失败!')
+#     except TypeError:
+#         print('测试成功!')
+
+# def fact(n):
+#     if n==1:
+#         return 1
+#     return n * fact(n - 1)
+
+# a = fact(1)
+# b = fact(5)
+# c = fact(100)
+# d = fact(1000)
+# print(a, '\n', end='')
+# print(b, '\n', end='')
+# print(c, '\n', end='')
+# print(d, '\n', end='')
+
+'''
+想象你在一栋大楼里找领导签字：
+
+你（Frame 3）拿着文件，去找经理（Frame 2）。
+
+经理说：“你先去拿财务（Frame 1）的盖章”。
+
+财务盖完章（返回 1），经理才愿意签字（返回 2），你才能拿回文件（返回 6）。
+
+栈帧，就是你在敲门时，把当前手里的文件“存”在门外的那个动作。等你拿到下一级的结果出来，你再从门外的文件里，继续往下写
+'''
+
+# def move(n, a, b, c):
+#     if n == 1:
+#         print(a, '-->', c)
+#     else:
+#         move(n - 1, a, c, b)
+#         print(a, '-->', c)
+#         move(n - 1, b, a, c)
+# move(3, 'A', 'B', 'C')
+
+def fibonacci(n):
+    if n == 1:
+        return 1
+    elif n >= 2:
+        return fibonacci(n - 1) + fibonacci(n - 2)
     else:
-        x1 = (-b + math.sqrt(delta)) / (2*a)
-        x2 = (-b - math.sqrt(delta)) / (2*a)
-        return x1,x2
-a,b,c = int(input("请输入二次方程的系数a: ")), int(input("请输入二次方程的系数b: ")), int(input("请输入二次方程的系数c: "))
+        return 0
 
-x1, x2 = quadratic(a, b, c)
-print(f"方程的解为：x1 = {x1}, x2 = {x2}")
-
-if quadratic(2, 3, 1) != (-0.5, -1.0):
-    print('测试失败')
-elif quadratic(1, 3, -4) != (1.0, -4.0):
-    print('测试失败')
-else:
-    print('测试成功')
-
-
-
-
-
-
-
-
+print(fibonacci(10))
