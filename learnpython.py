@@ -187,12 +187,264 @@ s = {'张三', 18, '李四'}
 #         move(n - 1, b, a, c)
 # move(3, 'A', 'B', 'C')
 
-def fibonacci(n):
-    if n == 1:
-        return 1
-    elif n >= 2:
-        return fibonacci(n - 1) + fibonacci(n - 2)
-    else:
-        return 0
+# def fibonacci(n):
+#     if n == 1:
+#         return 1
+#     elif n >= 2:
+#         return fibonacci(n - 1) + fibonacci(n - 2)
+#     else:
+#         return 0
 
-print(fibonacci(10))
+# print(fibonacci(10))
+
+###################--------day3--------###################
+
+# def trim(s):
+#     while s[:1] == ' ':
+#         s = s[1:]
+#     while s[-1:] == ' ':
+#         s = s[:-1]
+#     return s
+
+# # 测试:
+# if trim('hello  ') != 'hello':
+#     print('测试失败!')
+# elif trim('  hello') != 'hello':
+#     print('测试失败!')
+# elif trim('  hello  ') != 'hello':
+#     print('测试失败!')
+# elif trim('  hello  world  ') != 'hello  world':
+#     print('测试失败!')
+# elif trim('') != '':
+#     print('测试失败!')
+# elif trim('    ') != '':
+#     print('测试失败!')
+# else:
+#     print('测试成功!')
+
+
+# def findMinAndMax(L):
+#     if len(L) == 0:
+#         return (None, None)
+#     else:
+#         min = L[0]
+#         max = L[0]
+#         for i in range(len(L)):
+#             if L[i] < min:
+#                 min = L[i]
+#             elif L[i] > max:
+#                 max = L[i]
+#         return (min, max)
+
+
+# # 测试
+# if findMinAndMax([]) != (None, None):
+#     print('测试失败!')
+# elif findMinAndMax([7]) != (7, 7):
+#     print('测试失败!')
+# elif findMinAndMax([7, 1]) != (1, 7):
+#     print('测试失败!')
+# elif findMinAndMax([7, 1, 3, 9, 5]) != (1, 9):
+#     print('测试失败!')
+# else:
+#     print('测试成功!')
+
+'''
+循环：代码里写了 for 或 while。
+
+迭代：把一筐苹果一个个拿出来洗干净的过程。
+
+递归：不用循环，靠函数自己喊自己，也能把苹果一个个洗了。
+
+死循环：一直在洗同一个苹果，或者苹果洗完了还在洗空气（无限重复，没有推进，这叫“循环”，但不叫“迭代”，因为迭代必须有“逐步推进”的含义）。
+'''
+
+# L1 = ['Hello', 'World', 18, 'Apple', None]
+# L2 = [s.lower() for s in L1 if isinstance(s, str)]
+
+# # 测试:
+# print(L2)
+# if L2 == ['hello', 'world', 'apple']:
+#     print('测试通过!')
+# else:
+#     print('测试失败!')
+
+'''
+列表：像一张写满数据的纸。你拿到手里，想怎么看就怎么看，想翻几次就翻几次，但纸很大，拿着很沉。
+
+生成器：像一个会算数的秘书。你问她“下一个是多少？”，她算一下告诉你。你不问她就不算，而且她只记当前算到哪了，绝不在脑子里记住所有算过的数字。你问完一遍，她就不记得前面算过什么了（不能回头问）。
+'''
+# def triangles():
+#     L = [1]
+#     while True:
+#         yield L
+#         L = [1] + [L[i] + L[i + 1] for i in range(len(L) - 1)] + [1] 
+
+# # 期待输出:
+# # [1]
+# # [1, 1]
+# # [1, 2, 1]
+# # [1, 3, 3, 1]
+# # [1, 4, 6, 4, 1]
+# # [1, 5, 10, 10, 5, 1]
+# # [1, 6, 15, 20, 15, 6, 1]
+# # [1, 7, 21, 35, 35, 21, 7, 1]
+# # [1, 8, 28, 56, 70, 56, 28, 8, 1]
+# # [1, 9, 36, 84, 126, 126, 84, 36, 9, 1]
+# n = 0
+# results = []
+# for t in triangles():
+#     results.append(t)
+#     n = n + 1
+#     if n == 10:
+#         break
+
+# for t in results:
+#     print(t)
+
+# if results == [
+#     [1],
+#     [1, 1],
+#     [1, 2, 1],
+#     [1, 3, 3, 1],
+#     [1, 4, 6, 4, 1],
+#     [1, 5, 10, 10, 5, 1],
+#     [1, 6, 15, 20, 15, 6, 1],
+#     [1, 7, 21, 35, 35, 21, 7, 1],
+#     [1, 8, 28, 56, 70, 56, 28, 8, 1],
+#     [1, 9, 36, 84, 126, 126, 84, 36, 9, 1]
+# ]:
+#     print('测试通过!')
+# else:
+#     print('测试失败!')
+
+
+# # 第一个循环模拟：t 最后变成了最后一行
+# t = [1, 9, 36, 84, 126, 126, 84, 36, 9, 1]
+# print("第一个循环结束后，t 的值是：", t)
+
+# # results 就是一个大箱子
+# results = [[1], [1, 1], [1, 2, 1]]
+
+# # 第二个循环
+# for t in results:
+#     print("现在的 t 是：", t)
+
+'''
+普通函数：像你去找一个只会背书的学生。每次你问他“背第5首古诗”，他都要从第1首开始背，背到第5首给你听，然后立刻失忆。你下次问他第6首，他又从第1首开始背。
+
+生成器（带 yield 的函数）：像你去找一个正在背书的学生。他背到第5首时，你说“停”，他就停在那里（保存了现场）。你去干别的事，回来跟他说“继续”，他从第6首接着背，不用从头再来。
+
+迭代器（普通迭代器）：像一本印好的书，你只是放了个书签在里面，翻一页看一页，书的内容本身不变。
+'''
+# def add(x, y, f):
+#     return f(x) + f(y)
+
+# print(add(-5, 6, abs))
+
+'''
+一、 什么是 Iterable（可迭代对象）？
+定义：只要一个对象内部实现了 __iter__ 方法，它就是 Iterable。
+通俗理解：凡是能用 for x in 它: 来遍历的东西，都是可迭代对象。
+例子：列表 []、元组 ()、字符串 ''、字典 {}、集合 set()。
+
+它的核心特点：
+Iterable 自己没有记忆。它就像一筐苹果，你可以拿出一个啃一口，但筐本身不知道你啃到哪个了。
+如果你写 for x in [1, 2, 3]: 循环两次，它会老老实实把 [1, 2, 3] 遍历两遍（因为每次 for 都会帮它重新生成一个迭代器）。
+
+二、 什么是 Iterator（迭代器）？
+定义：只要一个对象同时实现了 __iter__ 和 __next__ 方法，它就是 Iterator。
+通俗理解：既能被 for 遍历，又能用 next() 一个一个取值的对象。
+例子：iter([1, 2, 3]) 的返回值、生成器 (x for x in range(3))、带 yield 的函数返回的生成器。
+
+它的核心特点：
+Iterator 内部有状态记忆。它知道“我当前走到哪了”。它就像书签，翻一页就往后挪一格，并且不能回头（除非重新生成一个新的迭代器）。
+'''
+# from functools import reduce
+# def fn(x, y):
+#     return x * 10 + y
+# print(reduce(fn, [1, 3, 5, 7, 9]))
+
+# def normalize(name):
+#     if not name:        # 如果字符串为空，直接返回（防止报错）
+#         return name
+#     return name[0].upper() + name[1:].lower()
+
+# # 测试:
+# L1 = ['adam', 'LISA', 'barT']
+# L2 = list(map(normalize, L1))
+# print(L2)
+
+# from functools import reduce
+
+# def prod(L):
+#     def multiply(x, y):
+#         return x * y
+#     return reduce(multiply, L)
+
+# print('3 * 5 * 7 * 9 =', prod([3, 5, 7, 9]))
+# if prod([3, 5, 7, 9]) == 945:
+#     print('测试成功!')
+# else:
+#     print('测试失败!')
+
+from functools import reduce
+
+# def str2float(s):
+#     def multiply(x, y):
+#         return x * 10 + y
+    
+#     def char2num(c):
+#         return {'0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9}[c]
+    
+#     # 用 split 拆分整数和小数部分
+#     parts = s.split('.')
+    
+#     # 整数部分
+#     a = reduce(multiply, map(char2num, parts[0]))
+    
+#     if len(parts) == 1:
+#         return a  # 没有小数点
+    
+#     # 小数部分
+#     b = reduce(multiply, map(char2num, parts[1])) / (10 ** len(parts[1]))
+#     return a + b
+
+# print('str2float(\'123.456\') =', str2float('123.456'))
+# if abs(str2float('123.456') - 123.456) < 0.00001:
+#     print('测试成功!')
+# else:
+#     print('测试失败!')
+
+# def is_palindrome(n):
+#     s = str(n)
+#     reversed_s = s[::-1]
+#     return s == reversed_s
+
+# # 测试:
+# output = filter(is_palindrome, range(1, 1000))
+# print('1~1000:', list(output))
+# if list(filter(is_palindrome, range(1, 200))) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33, 44, 55, 66, 77, 88, 99, 101, 111, 121, 131, 141, 151, 161, 171, 181, 191]:
+#     print('测试成功!')
+# else:
+#     print('测试失败!')
+
+
+L = [('Bob', 75), ('Adam', 92), ('Bart', 66), ('Lisa', 88)]
+
+def by_name(t):
+    return t[0]
+
+L2 = sorted(L, key=by_name)
+print(L2)
+
+def by_score(t):
+    return t[1]
+
+L2 = sorted(L, key=by_score)
+print(L2)
+
+
+
+
+
